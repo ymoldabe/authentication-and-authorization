@@ -1,0 +1,11 @@
+# Запустить контейнер PostgreSQL
+postgres:
+	docker run --name postgres16 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:16.0-alpine3.18
+
+# Создать базу данных
+createdb:
+	docker exec -it postgres16 createdb --username=root --owner=root auth
+
+# Удалить базу данных
+dropdb:
+	docker exec -it postgres16 dropdb bank
